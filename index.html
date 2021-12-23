@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+test de page pour esp32
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: powderblue;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            h1   {color: blue;}
+            #qsoArea {
+                width:100%;
+                color:#444444;
+                font-size: 24px;
+                font-weight: bold;
+                resize: none;
+                height:10%;
+            }
+            #momMessage {
+                width:100%;
+                height:10%;
+                font-size: 24px;
+            }
+            #msg{
+                color: red;
+                font-size: 24px;
+            }
+        </style>
+        <script type="text/javascript">
+            function enter() {
+                if (window.event && window.event.keyCode == 13) {
+                    send();
+                    return false;
+                } else
+                    return true;
+            }
+            function send() {
+                var text = document.envoiMessage.input.value;
+                var text = document.getElementById("momMessage").value;
+                var qsoArea = document.getElementById("qsoArea");
+                qsoArea.scrollTop = qsoArea.scrollHeight;
+                qsoArea.innerHTML = qsoArea.value + text + "\n";
+                document.getElementById("momMessage").value = "";
+            }
+        </script>
+    </head>
+    <body>
+        <H1>RadioMessage</H1>
+        <textarea id="qsoArea" rows="10" readonly></textarea>
+        <div id="msg">Envoyer un message</div>
+        <FORM NAME="envoiMessage">
+            <INPUT TYPE="text" NAME="input" VALUE="" id="momMessage" onkeypress="return enter()"><BR>
+        </FORM>
+    </body>
+</html>
